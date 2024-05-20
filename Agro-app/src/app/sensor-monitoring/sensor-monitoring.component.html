@@ -1,0 +1,60 @@
+<div class="flex">
+  <div class="sensor-add">
+    <h2>Додати сенсор:</h2>
+    <select #sensorSelect>
+      <option *ngFor="let option of sensorOptions" [value]="option.value">{{ option.TypeName }}</option>
+    </select>
+    <button [disabled]="disabled" (click)="addSensor(sensorSelect.value)">Додати</button>
+  </div>
+</div>
+<div class="sensor-container">
+  <div class="sensor" *ngFor="let sensor of sensors; let i = index">
+    <h2>{{ sensor.TypeName }}</h2>
+    <div class="progress-bar" *ngIf="sensor.TypeName === 'Датчик вологості грунту'">
+      <div class="progress" [style.width]="sensor.value"></div>
+    </div>
+    <div *ngIf="sensor.TypeName === 'Датчик температури'" class="container">
+      <div class="de">
+        <div class="den">
+          <div class="dene">
+            <div class="denem">
+              <div class="deneme">
+                {{ sensor.value.split('°')[0] }}<span>.{{ sensor.value.split('°')[1] || '0'
+                  }}</span><strong>&deg;</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="status-indicator" *ngIf="sensor.TypeName === 'Датчик освітлення'">
+      <div class="light-indicator" [style.opacity]="sensor.value"></div>
+    </div>
+    <div *ngIf="sensor.TypeName === 'Датчик поливу'">
+      <button (click)="toggleWatering(sensor)">
+        {{ sensor.value === 'полив виконується' ? 'Вимкнути полив' : 'Увімкнути полив' }}
+      </button>
+    </div>
+    <p>Поточне значення: {{ sensor.value }}</p>
+    <button class="remove-button" (click)="removeSensor(i)">Видалити</button>
+  </div>
+  <div class="sensor">
+    <h2>Датчики моніторингу стану рослин</h2>
+    <table>
+      <tr>
+        <th>Рослина</th>
+        <th>Статус</th>
+        <th>Ріст</th>
+      </tr>
+      <tr *ngFor="let plant of plantStatusData">
+        <td>{{ plant.name }}</td>
+        <td>{{ plant.ripeness }}</td>
+        <td>{{ plant.growth }}</td>
+      </tr>
+    </table>
+    <canvas #LineCanvas id="LineCanvas"></canvas>
+  </div>
+</div>
+<div class="btn">
+  <button #refreshButton (click)="refreshView()">Оновити</button>
+</div>

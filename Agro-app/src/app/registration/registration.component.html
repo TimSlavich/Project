@@ -1,0 +1,27 @@
+<form class="registration-form" (ngSubmit)="register()">
+    <label for="firstName">Ім'я:</label>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="registrationData.firstName" required>
+  
+    <label for="lastName">Прізвище:</label>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="registrationData.lastName" required>
+  
+    <label for="address">Адреса:</label>
+    <input type="text" id="address" name="address" [(ngModel)]="registrationData.address" required>
+  
+    <label for="contactNumber">Контактний номер:</label>
+    <input type="tel" id="contactNumber" name="contactNumber" [(ngModel)]="registrationData.contactNumber" required>
+  
+    <label for="email">Електронна пошта:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="registrationData.email" required>
+    
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="registrationData.password" required>
+    <div>
+        <button type="submit">Зареєструватися</button>
+        <div class="toLogin">
+            <p class="toLoginText">Вже зареєстровані?</p>
+            <button type="button" (click)="login()">Вхід</button>
+        </div>
+    </div>
+    
+</form>

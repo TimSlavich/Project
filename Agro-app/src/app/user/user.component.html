@@ -1,0 +1,42 @@
+<div class="user-profile">
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Назва ферми:</strong> {{ user.farmName }}</p>
+    <p><strong>Статус ферми:</strong> {{ user.farmStatus }}</p>
+</div>
+
+<div class="user-info">
+    <h3>Заявки</h3>
+    <ul>
+        <li *ngFor="let application of user.applications">{{ application }}</li>
+    </ul>
+
+    <h3>Договори</h3>
+    <ul>
+        <li *ngFor="let contract of user.contracts">{{ contract }}</li>
+    </ul>
+
+    <h3>Плани</h3>
+    <ul>
+        <li *ngFor="let plan of user.plans">{{ plan }}</li>
+    </ul>
+
+    <h3>Завдання</h3>
+    <ul>
+        <li *ngFor="let task of user.tasks">{{ task }}</li>
+    </ul>
+</div>
+<div class="btn">
+    <button (click)="togglePopup()">Змінити пароль</button>
+</div>
+<div class="btn">
+    <button (click)="logout()">Вийти з аккаунта</button>
+</div>
+<div class="popup-container" *ngIf="showPopup">
+    <div class="popup-content">
+        <span class="close-button" (click)="togglePopup()">X</span>
+        <h3>Зміна пароля</h3>
+        <input  #password type="password" placeholder="Введіть новий пароль">
+        <button (click)="changePassword(password.value)">Зберегти</button>
+    </div>
+</div>

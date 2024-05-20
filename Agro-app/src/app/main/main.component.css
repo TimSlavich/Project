@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ccd36d;
+    border-radius: 30px;
+    color: #2f5033;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5),
+        inset 0 2px 2px rgba(255, 255, 255, 0.2);
+}
+  
+h2 {
+    color: #2f5033;
+}

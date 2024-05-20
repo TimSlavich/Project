@@ -1,0 +1,14 @@
+<form class="login-form" (ngSubmit)="login()">
+    <label for="email">Електронна пошта:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="loginData.email" required>
+  
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="loginData.password" required>
+    
+    <div>
+        <button type="submit">Увійти</button>
+        <p>aбо</p>
+        <button type="button" (click)="register()" >Зареєструватись</button>
+    </div>
+    
+</form>
