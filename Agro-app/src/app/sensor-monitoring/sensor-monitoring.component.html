@@ -34,6 +34,7 @@
       <button (click)="toggleWatering(sensor)">
         {{ sensor.value === 'полив виконується' ? 'Вимкнути полив' : 'Увімкнути полив' }}
       </button>
+      <div *ngIf="sensor.value === 'полив виконується'" class="water-indicator"></div>
     </div>
     <p>Поточне значення: {{ sensor.value }}</p>
     <button class="remove-button" (click)="removeSensor(i)">Видалити</button>

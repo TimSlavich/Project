@@ -184,7 +184,6 @@ export class SensorMonitoringComponent implements AfterViewInit {
     this.http.put(`http://localhost:5000/sensors/${encodeURIComponent(sensor.TypeName)}`, { newValue })
       .subscribe(
         (response) => {
-          console.log('Датчик поливу оновлено успішно:', response);
           sensor.value = newValue;
         },
         (error) => {

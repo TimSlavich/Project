@@ -139,7 +139,6 @@ app.put('/sensors/:TypeName', async (req, res) => {
     } catch (error) {
         res.status(500).send(error.message);
     }
-    console.log(req.body);
 });
 
 const updateSensorsData = async () => {
@@ -149,7 +148,10 @@ const updateSensorsData = async () => {
         sensors.forEach(async sensor => {
             const randomValue = Math.floor(Math.random() * 100);
             if (sensor.TypeName !== 'Датчик поливу'){
-                await Sensor.findByIdAndUpdate(sensor._id, { Value: randomValue.toString() }, { new: true });
+                await Sensor.findByIdAndUpdate(sensor._id, { Value: (randomValue.toString() + '%') }, { new: true });
+            }
+            if (sensor.TypeName == 'Датчик температури'){
+                await Sensor.findByIdAndUpdate(sensor._id, { Value: (randomValue.toString() + '°C') }, { new: true });
             }
             
         });
